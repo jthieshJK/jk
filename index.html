@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Amma's 70th — Bollywood Birthday Bash</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:     #c9a84c;
+  --gold-lt:  #e8c96d;
+  --gold-pale:#f5e6b8;
+  --gold-dk:  #8a6a1f;
+  --rose:     #d4788a;
+  --blush:    #f0b8c4;
+  --midnight: #08061a;
+  --surface:  rgba(255,255,255,0.032);
+  --border:   rgba(201,168,76,0.22);
+  --text:     #f0ead8;
+  --dim:      rgba(240,234,216,0.52);
+  --xs:       rgba(240,234,216,0.30);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;color:var(--text);background:var(--midnight);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ── BACKGROUND ── */
+.bg{
+  position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 110% 70% at 10% 0%,  rgba(100,35,170,0.44) 0%,transparent 62%),
+    radial-gradient(ellipse  70% 55% at 90% 20%,  rgba(175,85,45,0.20)  0%,transparent 62%),
+    radial-gradient(ellipse  80% 45% at 50% 100%, rgba(18,65,120,0.28)  0%,transparent 62%),
+    radial-gradient(ellipse  55% 35% at 88% 78%,  rgba(201,168,76,0.10) 0%,transparent 58%),
+    linear-gradient(168deg,#0a0620 0%,#08061a 45%,#0c0a24 72%,#09051a 100%);
+  animation:bgd 22s ease-in-out infinite alternate;
+}
+.bg::after{content:'';position:absolute;inset:0;opacity:.4;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-size:160px;}
+@keyframes bgd{0%{filter:hue-rotate(0deg) brightness(1);}50%{filter:hue-rotate(9deg) brightness(1.04);}100%{filter:hue-rotate(-5deg) brightness(.97);}}
+
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(88px);
+  animation:orb var(--d,22s) ease-in-out var(--dl,0s) infinite alternate;}
+.o1{width:500px;height:500px;background:radial-gradient(circle,rgba(120,45,210,.16) 0%,transparent 70%);top:-160px;left:-120px;--d:25s;}
+.o2{width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 70%);bottom:-110px;right:-90px;--d:28s;--dl:4s;}
+.o3{width:330px;height:330px;background:radial-gradient(circle,rgba(62,207,191,.08) 0%,transparent 70%);top:38%;left:52%;--d:20s;--dl:8s;}
+@keyframes orb{0%{opacity:1;transform:translate(0,0);}50%{opacity:1;transform:translate(28px,-38px);}100%{opacity:1;transform:translate(-18px,26px);}}
+
+/* ── STARS ── */
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.ts{position:absolute;color:var(--gold);animation:tw var(--d,2s) ease-in-out var(--dl,0s) infinite alternate;font-size:var(--sz,8px);opacity:0;}
+@keyframes tw{0%{opacity:0;transform:scale(.7);}100%{opacity:var(--op,.5);transform:scale(1.2);}}
+
+/* ── CONFETTI ── */
+#cv{position:fixed;inset:0;pointer-events:none;z-index:1;}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh;position:relative;z-index:2;}
+.page.active{display:block;animation:pin .65s cubic-bezier(.22,1,.36,1) both;}
+@keyframes pin{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* ════════════════════════════════════
+   PAGE 1
+════════════════════════════════════ */
+#p1{padding:0 22px 70px;text-align:center;max-width:520px;margin:0 auto;}
+
+/* ── STICKER ROW ── */
+.strow{display:flex;justify-content:space-between;align-items:flex-start;padding:18px 0 0;z-index:10;position:relative;}
+
+/* WAX SEAL */
+.seal{width:106px;height:106px;position:relative;animation:sw 7s ease-in-out infinite;filter:drop-shadow(0 4px 16px rgba(0,0,0,.6));}
+@keyframes sw{0%,100%{transform:rotate(-5deg) scale(1);}50%{transform:rotate(-2deg) scale(1.04);}}
+.seal svg.sbg{width:100%;height:100%;position:absolute;inset:0;}
+.seal .si{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;}
+.si .s1{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--gold-pale);}
+.si .s2{font-size:22px;line-height:1;margin:2px 0;}
+.si .s3{font-family:'Montserrat',sans-serif;font-size:6.5px;font-weight:600;letter-spacing:2px;color:rgba(245,230,184,.65);text-transform:uppercase;}
+.si .s4{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:7.5px;color:rgba(245,230,184,.45);text-align:center;line-height:1.3;max-width:60px;margin-top:1px;}
+
+/* ART DECO BADGE */
+.badge{width:98px;height:98px;position:relative;filter:drop-shadow(0 4px 16px rgba(0,0,0,.55));}
+.badge svg{width:100%;height:100%;animation:bspin 36s linear infinite;}
+.badge .bi{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:bspin 36s linear infinite reverse;}
+.bi .b1{font-family:'Montserrat',sans-serif;font-size:7px;font-weight:700;letter-spacing:3px;color:var(--gold-lt);}
+.bi .b2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--gold-pale);line-height:1;text-shadow:0 0 18px rgba(201,168,76,.5);}
+.bi .b2 sup{font-size:13px;vertical-align:super;}
+.bi .b3{font-family:'Montserrat',sans-serif;font-size:5px;font-weight:600;letter-spacing:1.5px;color:rgba(245,230,184,.45);text-transform:uppercase;}
+@keyframes bspin{to{transform:rotate(360deg);}}
+
+/* ── HERO CENTERPIECE ── */
+.hero-piece{position:relative;margin:14px auto 0;width:260px;height:280px;}
+
+/* Disco ball */
+.dball{
+  width:108px;height:108px;border-radius:50%;position:absolute;
+  top:110px;left:50%;transform:translateX(-50%);
+  animation:ballsw 10s ease-in-out infinite;transform-origin:center -90px; /* swing from champagne */
+}
+.dgrid{
+  width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;
+  background:
+    radial-gradient(ellipse at 30% 26%,rgba(255,255,255,.88) 0%,transparent 15%),
+    radial-gradient(ellipse at 65% 62%,rgba(190,220,255,.25) 0%,transparent 20%),
+    linear-gradient(135deg,#a8b4cc 0%,#ccd4e4 25%,#7a8ea8 50%,#bcc8d8 75%,#a0acc0 100%);
+  box-shadow:inset -16px -16px 32px rgba(0,0,20,.55),inset 7px 7px 18px rgba(255,255,255,.35),0 0 45px rgba(170,185,215,.25);
+}
+.dgrid::before{content:'';position:absolute;inset:0;border-radius:50%;
+  background-image:repeating-linear-gradient(0deg,transparent 0px,transparent 9px,rgba(0,0,20,.2) 9px,rgba(0,0,20,.2) 10px),
+  repeating-linear-gradient(90deg,transparent 0px,transparent 9px,rgba(0,0,20,.2) 9px,rgba(0,0,20,.2) 10px);
+  animation:tsh 3s ease-in-out infinite alternate;}
+.dgrid::after{content:'';position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(rgba(255,145,195,.20) 0deg,rgba(201,168,76,.16) 60deg,rgba(90,210,255,.16) 120deg,rgba(175,95,255,.16) 180deg,rgba(255,145,195,.16) 240deg,rgba(90,255,195,.13) 300deg,rgba(255,145,195,.20) 360deg);
+  animation:csp 5s linear infinite;mix-blend-mode:screen;}
+@keyframes ballsw{0%,100%{transform:translateX(-50%) rotate(-2deg);}50%{transform:translateX(-50%) rotate(2deg);}}
+@keyframes tsh{0%{opacity:.5;}100%{opacity:1;}}
+@keyframes csp{to{transform:rotate(360deg);}}
+
+/* Ball string */
+.dstring{position:absolute;left:50%;top:108px;transform:translateX(-50%);
+  width:1.5px;height:24px;background:linear-gradient(to bottom,rgba(200,190,170,.5),rgba(150,140,120,.1));}
+
+/* Rays */
+.drays{position:absolute;width:280px;height:280px;top:112px;left:50%;
+  transform:translate(-50%,-50%);pointer-events:none;animation:rsp 8s linear infinite;}
+.rl{position:absolute;top:50%;left:50%;height:1.5px;width:140px;transform-origin:0 50%;
+  background:linear-gradient(90deg,rgba(201,168,76,.35) 0%,transparent 100%);filter:blur(.5px);}
+@keyframes rsp{to{transform:translate(-50%,-50%) rotate(360deg);}}
+
+/* ── ELEGANT CAKE SVG ── */
+.cake-scene{position:absolute;bottom:0;left:50%;transform:translateX(-50%);}
+
+/* ── CHAMPAGNE BOTTLE + SPARKLER ── */
+.champagne-scene{position:absolute;top:0;right:10px;}
+.sparkler-glow{animation:spk 0.4s ease-in-out infinite alternate;}
+@keyframes spk{from{opacity:.6;filter:drop-shadow(0 0 4px rgba(255,220,80,.5));}to{opacity:1;filter:drop-shadow(0 0 10px rgba(255,200,60,.9));}}
+
+/* Party Hat ornament — left side */
+.hat-scene{position:absolute;top:0;left:10px;}
+
+/* ── HEADLINE ── */
+.hl-pre{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;letter-spacing:5px;color:var(--xs);text-transform:uppercase;margin:22px 0 4px;}
+.hl-name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,9.5vw,52px);letter-spacing:10px;text-transform:uppercase;color:var(--gold-pale);text-shadow:0 0 40px rgba(201,168,76,.28);animation:gbr 3.5s ease-in-out infinite alternate;}
+.hl-70row{line-height:.85;margin:0 0 4px;}
+.hl-70{font-family:'Cormorant Garamond',serif;font-size:clamp(88px,25vw,140px);font-weight:700;letter-spacing:-3px;display:inline-block;color:transparent;-webkit-text-stroke:1.5px var(--gold);position:relative;text-shadow:none;animation:sglow 4s ease-in-out infinite alternate;}
+.hl-70::before{content:'70';position:absolute;inset:0;letter-spacing:-3px;-webkit-text-stroke:0;
+  background:linear-gradient(155deg,var(--gold-pale) 0%,var(--gold) 38%,var(--gold-lt) 58%,var(--gold-dk) 100%);
+  background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:gsh 3.5s ease-in-out infinite alternate;}
+.hl-th{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,5vw,32px);font-weight:400;color:var(--gold);vertical-align:super;display:inline-block;transform:translateY(8px);}
+@keyframes gbr{from{text-shadow:0 0 22px rgba(201,168,76,.16);}to{text-shadow:0 0 55px rgba(201,168,76,.46),0 0 100px rgba(201,168,76,.12);}}
+@keyframes sglow{from{filter:drop-shadow(0 0 5px rgba(201,168,76,.16));}to{filter:drop-shadow(0 0 26px rgba(201,168,76,.46));}}
+@keyframes gsh{0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
+
+/* ── DIVIDER ── */
+.dv{display:flex;align-items:center;gap:12px;margin:10px auto;max-width:260px;}
+.dl{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.dd{color:var(--gold);font-size:7px;letter-spacing:5px;}
+
+/* ── BANNER ── */
+.banner{position:relative;margin:0 auto 16px;padding:12px 26px;display:inline-block;overflow:hidden;
+  background:linear-gradient(135deg,rgba(201,168,76,.07) 0%,rgba(232,201,109,.12) 50%,rgba(201,168,76,.07) 100%);
+  border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);}
+.banner::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(245,230,184,.32) 50%,transparent 100%);
+  background-size:200% 100%;animation:bsw 3.2s linear infinite;}
+.banner h2{font-family:'Montserrat',sans-serif;font-size:clamp(11px,4vw,19px);font-weight:700;
+  letter-spacing:clamp(2px,1vw,5px);color:var(--gold-pale);text-transform:uppercase;position:relative;z-index:1;white-space:nowrap;}
+@keyframes bsw{0%{background-position:-100% 0;}100%{background-position:200% 0;}}
+
+/* ── ELEGANT INFO DISPLAY ── */
+.event-info{
+  margin:0 auto 22px;
+  border:1px solid var(--border);
+  border-radius:2px;
+  background:var(--surface);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  overflow:hidden;
+  position:relative;
+}
+.event-info::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at top,rgba(201,168,76,.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+/* Top bar: big date */
+.ei-date-row{
+  padding:24px 22px 20px;
+  border-bottom:1px solid rgba(201,168,76,.14);
+  position:relative;
+}
+.ei-date-label{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:700;
+  letter-spacing:5px;text-transform:uppercase;color:var(--xs);margin-bottom:8px;}
+.ei-date-main{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(32px,9vw,46px);color:var(--gold-pale);
+  letter-spacing:2px;line-height:1;
+  text-shadow:0 0 30px rgba(201,168,76,.25);
+}
+.ei-date-main strong{font-weight:700;color:var(--gold-lt);}
+.ei-date-year{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:400;
+  letter-spacing:5px;color:var(--dim);margin-top:4px;}
+
+/* Middle row: time + venue split */
+.ei-mid{display:grid;grid-template-columns:1fr 1px 1fr;}
+.ei-sep{background:rgba(201,168,76,.14);}
+.ei-time,.ei-venue{padding:18px 18px 18px;}
+.ei-col-label{font-family:'Montserrat',sans-serif;font-size:7.5px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;color:var(--xs);margin-bottom:8px;}
+.ei-time-val{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,7vw,36px);
+  font-weight:600;color:var(--text);letter-spacing:3px;line-height:1;}
+.ei-time-ampm{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:400;
+  letter-spacing:2px;color:var(--dim);margin-top:3px;}
+.ei-venue-val{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,4vw,19px);
+  font-weight:600;color:var(--blush);letter-spacing:.5px;line-height:1.3;}
+.ei-venue-sub{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:400;
+  letter-spacing:1px;color:var(--xs);margin-top:4px;}
+
+/* Bottom row: RSVP note + hat icons */
+.ei-bottom{
+  padding:14px 22px;
+  border-top:1px solid rgba(201,168,76,.14);
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.ei-bottom-text{font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(11px,3vw,13px);color:var(--xs);text-align:left;}
+.ei-icons{display:flex;gap:8px;align-items:center;flex-shrink:0;}
+
+/* CTA */
+.cta{
+  display:inline-block;padding:15px 46px;cursor:pointer;
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:5px;text-transform:uppercase;color:var(--midnight);
+  background:linear-gradient(120deg,var(--gold-dk),var(--gold),var(--gold-lt),var(--gold));
+  background-size:250%;border:none;border-radius:1px;
+  animation:gm 3.5s ease-in-out infinite alternate;
+  box-shadow:0 4px 22px rgba(201,168,76,.3),0 0 0 1px rgba(201,168,76,.36);
+  transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;margin-bottom:10px;
+}
+.cta::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);
+  background-size:200%;animation:csh 2.8s ease-in-out infinite;}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.46);}
+.cta:active{transform:translateY(0);}
+@keyframes gm{0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
+@keyframes csh{0%{background-position:-100% 0;}100%{background-position:200% 0;}}
+.cta-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--xs);}
+
+/* ════════════════════════════════════
+   PAGE 2 — RSVP
+════════════════════════════════════ */
+#p2{max-width:510px;margin:0 auto;padding:36px 22px 70px;}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;
+  font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--xs);
+  background:none;border:none;cursor:pointer;transition:color .25s;margin-bottom:36px;padding:0;}
+.back:hover{color:var(--gold);}
+.rtop{text-align:center;margin-bottom:34px;}
+.rtop .pre{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:600;
+  letter-spacing:5px;color:var(--xs);text-transform:uppercase;margin-bottom:10px;}
+.rtop h1{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,7.5vw,42px);
+  font-weight:400;color:var(--gold-pale);letter-spacing:5px;
+  text-shadow:0 0 36px rgba(201,168,76,.26);margin-bottom:10px;}
+.rtop p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(12px,3vw,15px);color:var(--dim);}
+.fcard{border:1px solid var(--border);border-radius:2px;background:var(--surface);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:34px 24px;position:relative;overflow:hidden;}
+.fcard::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at top left,rgba(130,45,200,.04) 0%,transparent 58%),
+             radial-gradient(ellipse at bottom right,rgba(201,168,76,.04) 0%,transparent 58%);pointer-events:none;}
+.fg{margin-bottom:24px;}
+.fg label{display:block;font-family:'Montserrat',sans-serif;font-size:8.5px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.fg input[type=text],.fg textarea{
+  width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.24);
+  border-radius:1px;padding:13px 15px;font-family:'Montserrat',sans-serif;font-size:14px;
+  color:var(--text);outline:none;transition:border-color .3s,background .3s,box-shadow .3s;caret-color:var(--gold);}
+.fg input:focus,.fg textarea:focus{border-color:rgba(201,168,76,.64);background:rgba(201,168,76,.04);box-shadow:0 0 0 3px rgba(201,168,76,.07);}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--xs);font-weight:300;}
+.fg textarea{resize:vertical;min-height:80px;line-height:1.6;}
+.arow{display:flex;gap:10px;}
+.ao{flex:1;}
+.ao input{display:none;}
+.ao label{display:flex;align-items:center;justify-content:center;gap:7px;padding:13px 8px;
+  border:1px solid rgba(201,168,76,.24);background:rgba(255,255,255,.025);cursor:pointer;
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--dim);transition:all .3s;border-radius:1px;}
+.ao label .em{font-size:14px;}
+.ao input:checked+label{border-color:var(--gold);background:rgba(201,168,76,.09);color:var(--gold-pale);box-shadow:0 0 16px rgba(201,168,76,.1);}
+.ao label:hover{border-color:rgba(201,168,76,.48);color:var(--text);}
+.cond{overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1),opacity .4s;max-height:0;opacity:0;}
+.cond.vis{max-height:240px;opacity:1;}
+.stepper{display:flex;align-items:center;border:1px solid rgba(201,168,76,.24);border-radius:1px;overflow:hidden;height:50px;}
+.sp{width:50px;height:100%;background:rgba(201,168,76,.08);border:none;color:var(--gold-pale);font-size:22px;font-family:'Cormorant Garamond',serif;cursor:pointer;transition:background .2s;font-weight:300;}
+.sp:hover{background:rgba(201,168,76,.17);}
+.sv{flex:1;text-align:center;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold-pale);background:transparent;border-left:1px solid rgba(201,168,76,.14);border-right:1px solid rgba(201,168,76,.14);display:flex;align-items:center;justify-content:center;}
+.sub{width:100%;padding:16px;margin-top:28px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--midnight);background:linear-gradient(120deg,var(--gold-dk),var(--gold),var(--gold-lt),var(--gold));background-size:250%;border:none;border-radius:1px;animation:gm 3.5s ease-in-out infinite alternate;box-shadow:0 4px 22px rgba(201,168,76,.26);transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.sub::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);background-size:200%;animation:csh 2.8s ease-in-out infinite;}
+.sub:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.40);}
+.whisper{text-align:center;margin-top:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--xs);}
+#sw{display:none;text-align:center;animation:pin .7s cubic-bezier(.22,1,.36,1) both;}
+#sw.show{display:block;}
+.scard{border:1px solid var(--border);background:var(--surface);backdrop-filter:blur(20px);border-radius:2px;padding:42px 24px;position:relative;overflow:hidden;}
+.scard::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(201,168,76,.055) 0%,transparent 65%);pointer-events:none;}
+.sseal{width:96px;height:96px;margin:0 auto 24px;animation:sw 6s ease-in-out infinite;}
+.sh{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,6vw,34px);font-weight:400;letter-spacing:5px;color:var(--gold-pale);text-shadow:0 0 38px rgba(201,168,76,.42);margin-bottom:14px;}
+.sm{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,3.5vw,18px);color:var(--dim);line-height:1.75;max-width:360px;margin:0 auto 24px;}
+.sdet{display:inline-block;border:1px solid var(--border);padding:13px 24px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--xs);line-height:2.2;}
+.sdet strong{color:var(--gold);font-weight:700;}
+
+@media(max-width:380px){
+  .fcard,.scard{padding:24px 14px;}
+  #p2{padding:26px 14px 60px;}
+  #p1{padding:0 14px 60px;}
+  .seal{width:88px;height:88px;}
+  .badge{width:82px;height:82px;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<canvas id="cv"></canvas>
+<div class="stars" id="stars"></div>
+
+<!-- ═══════════════ PAGE 1 ═══════════════ -->
+<div id="p1" class="page active">
+
+  <!-- STICKER ROW -->
+  <div class="strow">
+    <!-- WAX SEAL -->
+    <div class="seal">
+      <svg class="sbg" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="wg" cx="38%" cy="32%">
+            <stop offset="0%" stop-color="#28184a"/><stop offset="100%" stop-color="#0c0820"/>
+          </radialGradient>
+          <filter id="wf"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,.55)"/></filter>
+        </defs>
+        <circle cx="53" cy="53" r="50" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="2 3.5" opacity=".6"/>
+        <circle cx="53" cy="53" r="44" fill="url(#wg)" filter="url(#wf)"/>
+        <circle cx="53" cy="53" r="40" fill="none" stroke="rgba(201,168,76,.13)" stroke-width=".8"/>
+        <circle cx="53" cy="53" r="36" fill="none" stroke="rgba(201,168,76,.10)" stroke-width=".8"/>
+        <circle cx="53" cy="53" r="32" fill="none" stroke="rgba(201,168,76,.08)" stroke-width=".8"/>
+        <circle cx="53" cy="53" r="44" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity=".85"/>
+        <ellipse cx="39" cy="33" rx="9.5" ry="5" fill="rgba(255,255,255,.055)" transform="rotate(-22 39 33)"/>
+      </svg>
+      <div class="si">
+        <span class="s1">SHHH...</span>
+        <span class="s2">🤫</span>
+        <span class="s3">Secret Bash</span>
+        <span class="s4">hush till you see her face</span>
+      </div>
+    </div>
+
+    <!-- ART DECO BADGE -->
+    <div class="badge">
+      <svg viewBox="0 0 98 98" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="bdg" cx="38%" cy="32%">
+            <stop offset="0%" stop-color="#1e1235"/><stop offset="100%" stop-color="#0a0820"/>
+          </radialGradient>
+        </defs>
+        <circle cx="49" cy="49" r="47" fill="none" stroke="#c9a84c" stroke-width=".8" opacity=".38"/>
+        <g stroke="#c9a84c" stroke-linecap="round">
+          <line x1="49" y1="2" x2="49" y2="9" stroke-width="2" opacity=".8"/>
+          <line x1="49" y1="89" x2="49" y2="96" stroke-width="2" opacity=".8"/>
+          <line x1="2" y1="49" x2="9" y2="49" stroke-width="2" opacity=".8"/>
+          <line x1="89" y1="49" x2="96" y2="49" stroke-width="2" opacity=".8"/>
+          <line x1="14" y1="14" x2="18.5" y2="18.5" stroke-width=".9" opacity=".38"/>
+          <line x1="84" y1="14" x2="79.5" y2="18.5" stroke-width=".9" opacity=".38"/>
+          <line x1="14" y1="84" x2="18.5" y2="79.5" stroke-width=".9" opacity=".38"/>
+          <line x1="84" y1="84" x2="79.5" y2="79.5" stroke-width=".9" opacity=".38"/>
+        </g>
+        <polygon points="49,2.5 50.8,5.5 49,4.5 47.2,5.5" fill="#c9a84c" opacity=".88"/>
+        <polygon points="49,95.5 50.8,92.5 49,93.5 47.2,92.5" fill="#c9a84c" opacity=".88"/>
+        <polygon points="2.5,49 5.5,50.8 4.5,49 5.5,47.2" fill="#c9a84c" opacity=".88"/>
+        <polygon points="95.5,49 92.5,50.8 93.5,49 92.5,47.2" fill="#c9a84c" opacity=".88"/>
+        <circle cx="49" cy="49" r="41" fill="url(#bdg)" stroke="#c9a84c" stroke-width="1.3" opacity=".94"/>
+        <circle cx="49" cy="49" r="36" fill="none" stroke="rgba(201,168,76,.26)" stroke-width=".8" stroke-dasharray="1 4.5"/>
+        <ellipse cx="37" cy="30" rx="8.5" ry="4.5" fill="rgba(255,255,255,.05)" transform="rotate(-20 37 30)"/>
+      </svg>
+      <div class="bi">
+        <span class="b1">AMMA'S</span>
+        <span class="b2">70<sup>th</sup></span>
+        <span class="b3">Limited Edition</span>
+      </div>
+    </div>
+  </div><!-- /strow -->
+
+  <!-- ── HERO CENTERPIECE ── -->
+  <div class="hero-piece">
+
+    <!-- Disco ball rays -->
+    <div class="drays" aria-hidden="true">
+      <div class="rl" style="transform:rotate(0deg)"></div>
+      <div class="rl" style="transform:rotate(30deg)"></div>
+      <div class="rl" style="transform:rotate(60deg)"></div>
+      <div class="rl" style="transform:rotate(90deg)"></div>
+      <div class="rl" style="transform:rotate(120deg)"></div>
+      <div class="rl" style="transform:rotate(150deg)"></div>
+      <div class="rl" style="transform:rotate(180deg)"></div>
+      <div class="rl" style="transform:rotate(210deg)"></div>
+      <div class="rl" style="transform:rotate(240deg)"></div>
+      <div class="rl" style="transform:rotate(270deg)"></div>
+      <div class="rl" style="transform:rotate(300deg)"></div>
+      <div class="rl" style="transform:rotate(330deg)"></div>
+    </div>
+
+    <!-- Disco ball string -->
+    <div class="dstring"></div>
+
+    <!-- Disco ball -->
+    <div class="dball"><div class="dgrid"></div></div>
+
+    <!-- ELEGANT SINGLE-TIER CAKE — fine line art style -->
+    <div class="cake-scene">
+      <svg width="170" height="130" viewBox="0 0 170 130" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="cg1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1e0a14"/>
+            <stop offset="100%" stop-color="#120610"/>
+          </linearGradient>
+          <linearGradient id="frost" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#c9a84c" stop-opacity=".6"/>
+            <stop offset="30%" stop-color="#f5e6b8"/>
+            <stop offset="60%" stop-color="#e8c96d"/>
+            <stop offset="100%" stop-color="#c9a84c" stop-opacity=".6"/>
+          </linearGradient>
+          <linearGradient id="plateg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d4a840"/>
+            <stop offset="100%" stop-color="#7a5a10"/>
+          </linearGradient>
+          <filter id="cblur"><feGaussianBlur stdDeviation="1.2"/></filter>
+          <filter id="glow"><feGaussianBlur stdDeviation="2.5"/></filter>
+        </defs>
+
+        <!-- Glow under cake -->
+        <ellipse cx="85" cy="126" rx="68" ry="5" fill="rgba(201,168,76,.12)" filter="url(#cblur)"/>
+
+        <!-- CAKE PLATE -->
+        <ellipse cx="85" cy="118" rx="70" ry="6" fill="url(#plateg)" opacity=".6"/>
+        <ellipse cx="85" cy="116" rx="70" ry="5.5" fill="#c9a84c" opacity=".35"/>
+        <!-- Plate rim highlight -->
+        <ellipse cx="85" cy="115.5" rx="70" ry="4" fill="none" stroke="rgba(245,230,184,.25)" stroke-width="1"/>
+
+        <!-- CAKE BODY (single tier, tall, elegant) -->
+        <!-- Dark fill with subtle gradient -->
+        <rect x="15" y="52" width="140" height="62" rx="4" fill="url(#cg1)"/>
+        <!-- Left sheen -->
+        <rect x="15" y="52" width="18" height="62" rx="4" fill="rgba(255,255,255,.04)"/>
+        <!-- Top ellipse (3D top face) -->
+        <ellipse cx="85" cy="52" rx="70" ry="8" fill="#1a0810" opacity=".9"/>
+        <ellipse cx="85" cy="52" rx="70" ry="7" fill="#250e1a"/>
+        <!-- Gold edge on top -->
+        <ellipse cx="85" cy="52" rx="70" ry="7" fill="none" stroke="rgba(201,168,76,.5)" stroke-width="1"/>
+
+        <!-- FROSTING DRIP LAYER — elegant thin drips -->
+        <path d="
+          M15,57
+          Q20,50 25,56
+          Q30,62 38,55
+          Q46,48 54,55
+          Q62,62 70,55
+          Q78,48 85,55
+          Q92,62 100,55
+          Q108,48 116,55
+          Q124,62 132,55
+          Q140,48 148,55
+          Q153,59 155,57
+        " fill="none" stroke="url(#frost)" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- Frosting top band -->
+        <ellipse cx="85" cy="52" rx="70" ry="6" fill="none" stroke="url(#frost)" stroke-width="2" opacity=".7"/>
+
+        <!-- VERTICAL FLUTED LINES on cake body — very elegant detail -->
+        <g stroke="rgba(201,168,76,.10)" stroke-width=".8">
+          <line x1="35"  y1="60" x2="35"  y2="112"/>
+          <line x1="55"  y1="58" x2="55"  y2="114"/>
+          <line x1="75"  y1="57" x2="75"  y2="115"/>
+          <line x1="95"  y1="57" x2="95"  y2="115"/>
+          <line x1="115" y1="58" x2="115" y2="114"/>
+          <line x1="135" y1="60" x2="135" y2="112"/>
+        </g>
+
+        <!-- MIDDLE BAND — gold ribbon around cake -->
+        <rect x="15" y="82" width="140" height="1.5" fill="rgba(201,168,76,.35)"/>
+        <rect x="15" y="85" width="140" height=".5" fill="rgba(245,230,184,.15)"/>
+
+        <!-- GOLD LEAF MOTIFS (3 elegant botanical details) -->
+        <!-- Left motif -->
+        <g transform="translate(36,91)" stroke="rgba(201,168,76,.55)" stroke-width=".8" fill="none">
+          <ellipse cx="0" cy="0" rx="7" ry="3.5" transform="rotate(-20)"/>
+          <line x1="-7" y1="1.2" x2="7" y2="-1.2"/>
+          <ellipse cx="-10" cy="2" rx="5" ry="2.5" transform="rotate(-35 -10 2)"/>
+          <ellipse cx="10" cy="-2" rx="5" ry="2.5" transform="rotate(-35 10 -2)"/>
+        </g>
+        <!-- Centre motif -->
+        <g transform="translate(85,91)" stroke="rgba(201,168,76,.55)" stroke-width=".8" fill="none">
+          <ellipse cx="0" cy="0" rx="7" ry="3.5" transform="rotate(-20)"/>
+          <line x1="-7" y1="1.2" x2="7" y2="-1.2"/>
+          <ellipse cx="-10" cy="2" rx="5" ry="2.5" transform="rotate(-35 -10 2)"/>
+          <ellipse cx="10" cy="-2" rx="5" ry="2.5" transform="rotate(-35 10 -2)"/>
+        </g>
+        <!-- Right motif -->
+        <g transform="translate(134,91)" stroke="rgba(201,168,76,.55)" stroke-width=".8" fill="none">
+          <ellipse cx="0" cy="0" rx="7" ry="3.5" transform="rotate(-20)"/>
+          <line x1="-7" y1="1.2" x2="7" y2="-1.2"/>
+          <ellipse cx="-10" cy="2" rx="5" ry="2.5" transform="rotate(-35 -10 2)"/>
+          <ellipse cx="10" cy="-2" rx="5" ry="2.5" transform="rotate(-35 10 -2)"/>
+        </g>
+
+        <!-- "70" piped text on front face — double-stroke for depth -->
+        <text x="85" y="77" text-anchor="middle" dominant-baseline="middle"
+          font-family="Cormorant Garamond,serif" font-size="22" font-weight="700"
+          fill="none" stroke="rgba(201,168,76,.25)" stroke-width="3">70</text>
+        <text x="85" y="77" text-anchor="middle" dominant-baseline="middle"
+          font-family="Cormorant Garamond,serif" font-size="22" font-weight="700"
+          fill="#f5e6b8" opacity=".88">70</text>
+
+        <!-- 3 ELEGANT CANDLES (slender, tall) -->
+        <!-- Candle shafts -->
+        <rect x="60" y="28" width="6" height="25" rx="1.5" fill="#f5e6b8" opacity=".85"/>
+        <rect x="60" y="28" width="6" height="6"  rx="1"   fill="rgba(255,220,180,.5)"/>
+        <rect x="82" y="24" width="6" height="29" rx="1.5" fill="#f5e6b8" opacity=".85"/>
+        <rect x="82" y="24" width="6" height="6"  rx="1"   fill="rgba(255,220,180,.5)"/>
+        <rect x="104" y="28" width="6" height="25" rx="1.5" fill="#f5e6b8" opacity=".85"/>
+        <rect x="104" y="28" width="6" height="6"  rx="1"   fill="rgba(255,220,180,.5)"/>
+        <!-- Gold bands on candles -->
+        <rect x="60" y="35" width="6" height="1.5" fill="#c9a84c" opacity=".7"/>
+        <rect x="60" y="40" width="6" height="1.5" fill="#c9a84c" opacity=".7"/>
+        <rect x="82" y="31" width="6" height="1.5" fill="#c9a84c" opacity=".7"/>
+        <rect x="82" y="36" width="6" height="1.5" fill="#c9a84c" opacity=".7"/>
+        <rect x="104" y="35" width="6" height="1.5" fill="#c9a84c" opacity=".7"/>
+        <rect x="104" y="40" width="6" height="1.5" fill="#c9a84c" opacity=".7"/>
+        <!-- Wicks -->
+        <line x1="63" y1="28" x2="63" y2="23" stroke="#4a2e10" stroke-width="1.2"/>
+        <line x1="85" y1="24" x2="85" y2="18" stroke="#4a2e10" stroke-width="1.2"/>
+        <line x1="107" y1="28" x2="107" y2="23" stroke="#4a2e10" stroke-width="1.2"/>
+      </svg>
+
+      <!-- ANIMATED FLAMES — on top of SVG candles -->
+      <div style="position:absolute;top:0;left:0;width:170px;height:130px;pointer-events:none;">
+        <!-- Flame 1 — left candle (wick at x=63, y≈23 → scaled same as SVG viewBox=170px wide) -->
+        <div style="position:absolute;left:57px;top:4px;display:flex;flex-direction:column;align-items:center;">
+          <div style="width:9px;height:14px;border-radius:50% 50% 35% 35%/60% 60% 40% 40%;
+            background:radial-gradient(ellipse at 50% 80%,#fffde0 0%,#ffca44 32%,#ff8c00 64%,transparent 100%);
+            filter:blur(.4px);box-shadow:0 0 7px rgba(255,180,0,.75),0 0 16px rgba(255,100,0,.35);
+            animation:fl .68s ease-in-out .05s infinite alternate;transform-origin:50% 100%;"></div>
+        </div>
+        <!-- Flame 2 — centre candle (wick at x=85, y≈18) -->
+        <div style="position:absolute;left:79px;top:0px;display:flex;flex-direction:column;align-items:center;">
+          <div style="width:10px;height:16px;border-radius:50% 50% 35% 35%/60% 60% 40% 40%;
+            background:radial-gradient(ellipse at 50% 80%,#fffde0 0%,#ffca44 30%,#ff8c00 62%,transparent 100%);
+            filter:blur(.4px);box-shadow:0 0 9px rgba(255,180,0,.8),0 0 20px rgba(255,100,0,.4);
+            animation:fl .78s ease-in-out 0s infinite alternate;transform-origin:50% 100%;"></div>
+        </div>
+        <!-- Flame 3 — right candle (wick at x=107, y≈23) -->
+        <div style="position:absolute;left:101px;top:4px;display:flex;flex-direction:column;align-items:center;">
+          <div style="width:9px;height:14px;border-radius:50% 50% 35% 35%/60% 60% 40% 40%;
+            background:radial-gradient(ellipse at 50% 80%,#fffde0 0%,#ffca44 32%,#ff8c00 64%,transparent 100%);
+            filter:blur(.4px);box-shadow:0 0 7px rgba(255,180,0,.75),0 0 16px rgba(255,100,0,.35);
+            animation:fl .72s ease-in-out .14s infinite alternate;transform-origin:50% 100%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAMPAGNE BOTTLE — right side, elegant line art -->
+    <div class="champagne-scene">
+      <svg width="52" height="155" viewBox="0 0 52 155" xmlns="http://www.w3.org/2000/svg" class="sparkler-glow">
+        <defs>
+          <linearGradient id="botg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#1a3818"/>
+            <stop offset="40%" stop-color="#2d5c2a"/>
+            <stop offset="70%" stop-color="#3a7035"/>
+            <stop offset="100%" stop-color="#1a3818"/>
+          </linearGradient>
+          <linearGradient id="foilg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#8a6a1f"/>
+            <stop offset="50%" stop-color="#e8c96d"/>
+            <stop offset="100%" stop-color="#8a6a1f"/>
+          </linearGradient>
+          <linearGradient id="corkgrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d4aa70"/>
+            <stop offset="100%" stop-color="#a07840"/>
+          </linearGradient>
+        </defs>
+
+        <!-- SPARKLER STICK -->
+        <line x1="26" y1="0" x2="26" y2="30" stroke="rgba(201,168,76,.7)" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <!-- Sparkler sparks (static, glow handles animation) -->
+        <circle cx="22" cy="8"  r="1.5" fill="#ffca44" opacity=".9"/>
+        <circle cx="30" cy="12" r="1.2" fill="#fff8d0" opacity=".8"/>
+        <circle cx="18" cy="15" r="1"   fill="#ffca44" opacity=".7"/>
+        <circle cx="34" cy="6"  r="1.3" fill="#ffd060" opacity=".85"/>
+        <circle cx="26" cy="4"  r="2"   fill="#fffde0" opacity=".95"/>
+        <circle cx="20" cy="20" r=".9"  fill="#ffaa20" opacity=".6"/>
+        <circle cx="32" cy="18" r="1.1" fill="#ffca44" opacity=".75"/>
+        <!-- Sparkle lines -->
+        <line x1="26" y1="4" x2="20" y2="0"  stroke="#ffca44" stroke-width=".8" opacity=".7"/>
+        <line x1="26" y1="4" x2="32" y2="0"  stroke="#fff8d0" stroke-width=".8" opacity=".6"/>
+        <line x1="26" y1="4" x2="26" y2="-2" stroke="#ffca44" stroke-width=".8" opacity=".7"/>
+        <line x1="26" y1="8" x2="17" y2="5"  stroke="#ffaa20" stroke-width=".6" opacity=".5"/>
+        <line x1="26" y1="8" x2="35" y2="5"  stroke="#ffaa20" stroke-width=".6" opacity=".5"/>
+
+        <!-- BOTTLE NECK + CORK -->
+        <!-- Foil cap -->
+        <rect x="20" y="30" width="12" height="14" rx="2" fill="url(#foilg)"/>
+        <rect x="20" y="30" width="12" height="3"  rx="1" fill="#f5e6b8" opacity=".5"/>
+        <!-- Cage wire detail -->
+        <line x1="22" y1="32" x2="22" y2="43" stroke="rgba(201,168,76,.4)" stroke-width=".7"/>
+        <line x1="26" y1="30" x2="26" y2="43" stroke="rgba(201,168,76,.4)" stroke-width=".7"/>
+        <line x1="30" y1="32" x2="30" y2="43" stroke="rgba(201,168,76,.4)" stroke-width=".7"/>
+        <line x1="20" y1="37" x2="32" y2="37" stroke="rgba(201,168,76,.35)" stroke-width=".6"/>
+        <line x1="20" y1="41" x2="32" y2="41" stroke="rgba(201,168,76,.35)" stroke-width=".6"/>
+        <!-- Cork -->
+        <rect x="22" y="43" width="8" height="10" rx="1.5" fill="url(#corkgrad)"/>
+        <!-- Neck -->
+        <path d="M17,53 Q16,62 15,72 L15,78 L37,78 L37,72 Q36,62 35,53 Z" fill="url(#botg)"/>
+        <!-- Neck highlight -->
+        <path d="M21,53 Q20.5,62 20,72" stroke="rgba(255,255,255,.08)" stroke-width="2.5" fill="none"/>
+        <!-- Neck label band -->
+        <rect x="15" y="68" width="22" height="1" fill="rgba(201,168,76,.35)"/>
+
+        <!-- BOTTLE BODY -->
+        <path d="M15,78 Q12,82 11,90 L11,135 Q11,140 26,142 Q41,140 41,135 L41,90 Q40,82 37,78 Z" fill="url(#botg)"/>
+        <!-- Body highlight (left) -->
+        <path d="M15,82 Q13,95 13,115 L13,130" stroke="rgba(255,255,255,.07)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Body highlight (right glare) -->
+        <path d="M33,84 Q35,97 35,117 L35,132" stroke="rgba(255,255,255,.04)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- LABEL on bottle body -->
+        <rect x="14" y="92" width="24" height="34" rx="2" fill="rgba(245,230,184,.08)" stroke="rgba(201,168,76,.3)" stroke-width=".7"/>
+        <text x="26" y="104" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="6.5" font-weight="700" fill="#e8c96d" opacity=".85">AMMA'S</text>
+        <text x="26" y="113" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" font-weight="700" fill="#f5e6b8">70</text>
+        <line x1="16" y1="117" x2="36" y2="117" stroke="rgba(201,168,76,.3)" stroke-width=".5"/>
+        <text x="26" y="122" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="4" font-weight="600" fill="rgba(245,230,184,.5)" letter-spacing="1">VINTAGE</text>
+
+        <!-- Bottle base ellipse -->
+        <ellipse cx="26" cy="136" rx="15" ry="3.5" fill="rgba(0,0,0,.4)"/>
+        <ellipse cx="26" cy="135" rx="14.5" ry="3" fill="#1a3818" stroke="rgba(201,168,76,.2)" stroke-width=".6"/>
+
+        <!-- Bubbles floating up -->
+        <circle cx="23" cy="120" r="1"   fill="rgba(255,255,255,.15)"/>
+        <circle cx="29" cy="110" r=".7"  fill="rgba(255,255,255,.12)"/>
+        <circle cx="25" cy="100" r=".8"  fill="rgba(255,255,255,.10)"/>
+      </svg>
+    </div>
+
+    <!-- ELEGANT PARTY HAT — left side, fine gold line art -->
+    <div class="hat-scene">
+      <svg width="52" height="120" viewBox="0 0 52 120" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hatg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1e0c30"/>
+            <stop offset="100%" stop-color="#0e0620"/>
+          </linearGradient>
+          <linearGradient id="hatband" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#8a6a1f"/>
+            <stop offset="50%" stop-color="#e8c96d"/>
+            <stop offset="100%" stop-color="#8a6a1f"/>
+          </linearGradient>
+        </defs>
+
+        <!-- HAT CONE body -->
+        <path d="M26,2 L6,105 Q26,112 46,105 Z" fill="url(#hatg)"/>
+        <!-- Hat outline (gold) -->
+        <path d="M26,2 L6,105 Q26,112 46,105 Z" fill="none" stroke="#c9a84c" stroke-width="1" opacity=".6"/>
+        <!-- Hat seam -->
+        <line x1="26" y1="2" x2="36" y2="105" stroke="rgba(201,168,76,.12)" stroke-width=".8"/>
+
+        <!-- Diagonal stripe details (elegant, not cartoonish) -->
+        <clipPath id="hatclip"><path d="M26,2 L6,105 Q26,112 46,105 Z"/></clipPath>
+        <g clip-path="url(#hatclip)" stroke="rgba(201,168,76,.15)" stroke-width=".8">
+          <line x1="0"  y1="30"  x2="52" y2="45"/>
+          <line x1="0"  y1="50"  x2="52" y2="65"/>
+          <line x1="0"  y1="70"  x2="52" y2="85"/>
+          <line x1="0"  y1="90"  x2="52" y2="105"/>
+        </g>
+
+        <!-- Diamond ornament on hat face -->
+        <g transform="translate(26,50)" stroke="rgba(201,168,76,.45)" stroke-width=".8" fill="none">
+          <polygon points="0,-9 5,0 0,9 -5,0" stroke-width=".9" opacity=".7"/>
+          <circle cx="0" cy="0" r="2.5" fill="rgba(201,168,76,.3)"/>
+        </g>
+        <g transform="translate(22,70)" stroke="rgba(201,168,76,.3)" stroke-width=".7" fill="none">
+          <polygon points="0,-5 3,0 0,5 -3,0"/>
+        </g>
+        <g transform="translate(30,35)" stroke="rgba(201,168,76,.3)" stroke-width=".7" fill="none">
+          <polygon points="0,-4 2.5,0 0,4 -2.5,0"/>
+        </g>
+
+        <!-- Hat brim band -->
+        <path d="M6,105 Q26,112 46,105" fill="none" stroke="url(#hatband)" stroke-width="5"/>
+        <path d="M6,105 Q26,112 46,105" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+        <!-- Brim ellipse -->
+        <ellipse cx="26" cy="105" rx="21" ry="5" fill="#1e0c30" stroke="url(#hatband)" stroke-width="1.2"/>
+
+        <!-- POM-POM at tip -->
+        <circle cx="26" cy="5" r="6" fill="#1e0c30" stroke="rgba(201,168,76,.5)" stroke-width=".8"/>
+        <circle cx="26" cy="5" r="4" fill="rgba(201,168,76,.25)"/>
+        <circle cx="26" cy="5" r="2" fill="rgba(245,230,184,.6)"/>
+        <!-- Tassel string -->
+        <line x1="26" y1="0" x2="26" y2="-8" stroke="rgba(201,168,76,.5)" stroke-width=".8" stroke-dasharray="1.5 1.5"/>
+        <circle cx="26" cy="-10" r="2" fill="rgba(201,168,76,.5)"/>
+      </svg>
+    </div>
+
+  </div><!-- /hero-piece -->
+
+  <style>
+    @keyframes fl{
+      0%  {transform:scaleX(1) scaleY(1) rotate(-2.5deg);opacity:1;}
+      33% {transform:scaleX(.82) scaleY(1.12) rotate(3.5deg);opacity:.86;}
+      66% {transform:scaleX(1.12) scaleY(.92) rotate(-1.5deg);opacity:.94;}
+      100%{transform:scaleX(.9) scaleY(1.08) rotate(2deg);opacity:1;}
+    }
+  </style>
+
+  <!-- HEADLINE -->
+  <div class="hl-pre">A Celebration of a Legend</div>
+  <div class="hl-name">AMMA'S</div>
+  <div class="hl-70row">
+    <span class="hl-70">70</span><span class="hl-th">th</span>
+  </div>
+  <div style="font-family:'Montserrat',sans-serif;font-size:8.5px;font-weight:600;letter-spacing:7px;color:var(--xs);text-transform:uppercase;margin:-4px 0 0;">Birthday &nbsp;·&nbsp; 2026</div>
+
+  <div class="dv"><div class="dl"></div><div class="dd">◆ ◆ ◆</div><div class="dl"></div></div>
+
+  <!-- BANNER -->
+  <div class="banner"><h2>Bollywood Birthday Bash</h2></div>
+
+  <div class="dv" style="margin:12px auto"><div class="dl"></div><div class="dd">◆</div><div class="dl"></div></div>
+
+  <!-- ── ELEGANT EVENT INFO ── -->
+  <div class="event-info">
+
+    <!-- Date row — big and dramatic -->
+    <div class="ei-date-row">
+      <div class="ei-date-label">Date of Celebration</div>
+      <div class="ei-date-main">
+        <strong>21</strong> November
+      </div>
+      <div class="ei-date-year">Saturday &nbsp;·&nbsp; 2026</div>
+    </div>
+
+    <!-- Time + Venue two-column -->
+    <div class="ei-mid">
+      <div class="ei-time">
+        <div class="ei-col-label">Doors Open</div>
+        <div class="ei-time-val">7:00</div>
+        <div class="ei-time-ampm">PM onwards</div>
+      </div>
+      <div class="ei-sep"></div>
+      <div class="ei-venue">
+        <div class="ei-col-label">Venue</div>
+        <div class="ei-venue-val">Alpha Event Hall</div>
+        <div class="ei-venue-sub">Seremban, NS</div>
+      </div>
+    </div>
+
+    <!-- Bottom row with hat + cake icons -->
+    <div class="ei-bottom">
+      <div class="ei-bottom-text">Black tie welcome · Bollywood attire celebrated</div>
+      <!-- Tiny elegant icon row -->
+      <div class="ei-icons">
+        <!-- Mini party hat icon -->
+        <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" opacity=".5">
+          <path d="M9,1 L1,19 Q9,22 17,19 Z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,.08)"/>
+          <circle cx="9" cy="2" r="1.5" fill="#c9a84c" opacity=".7"/>
+          <ellipse cx="9" cy="19" rx="8" ry="2.5" stroke="#c9a84c" stroke-width=".8" fill="rgba(201,168,76,.12)"/>
+        </svg>
+        <!-- Mini cake icon -->
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" opacity=".5">
+          <rect x="2" y="10" width="18" height="10" rx="1.5" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,.06)"/>
+          <path d="M2,12 Q5.5,8.5 9,12 Q12.5,15.5 16,12 Q18,10.5 20,12" stroke="#e8c96d" stroke-width="1" fill="none" stroke-linecap="round"/>
+          <line x1="8"  y1="10" x2="8"  y2="4" stroke="#c9a84c" stroke-width=".8"/>
+          <line x1="11" y1="10" x2="11" y2="3" stroke="#c9a84c" stroke-width=".8"/>
+          <line x1="14" y1="10" x2="14" y2="4" stroke="#c9a84c" stroke-width=".8"/>
+          <ellipse cx="8"  cy="3.5" rx="1.5" ry="2" fill="rgba(255,180,0,.4)" stroke="rgba(255,160,0,.6)" stroke-width=".5"/>
+          <ellipse cx="11" cy="2.5" rx="1.5" ry="2" fill="rgba(255,180,0,.4)" stroke="rgba(255,160,0,.6)" stroke-width=".5"/>
+          <ellipse cx="14" cy="3.5" rx="1.5" ry="2" fill="rgba(255,180,0,.4)" stroke="rgba(255,160,0,.6)" stroke-width=".5"/>
+        </svg>
+        <!-- Mini disco icon -->
+        <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" opacity=".5">
+          <line x1="9" y1="0" x2="9" y2="5" stroke="#c9a84c" stroke-width=".8"/>
+          <circle cx="9" cy="13" r="8" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,.07)"/>
+          <circle cx="9" cy="13" r="5" stroke="rgba(201,168,76,.4)" stroke-width=".6" stroke-dasharray="1.5 2"/>
+          <circle cx="6.5" cy="10" r=".9" fill="#c9a84c" opacity=".7"/>
+          <circle cx="11.5" cy="10" r=".9" fill="#c9a84c" opacity=".7"/>
+          <circle cx="9" cy="14.5" r=".9" fill="#c9a84c" opacity=".7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <button class="cta" onclick="showP('p2')">RSVP &nbsp;◆&nbsp; Confirm Attendance</button><br>
+  <span class="cta-hint">Kindly respond at your earliest convenience</span>
+</div>
+
+
+<!-- ═══════════════ PAGE 2 ═══════════════ -->
+<!-- ═══════════════ PAGE 2 ═══════════════ -->
+<div id="p2" class="page">
+
+  <button class="back" onclick="showP('p1')">← &nbsp; Back</button>
+
+  <div class="rtop">
+    <div class="pre">Amma's 70th Bollywood Bash</div>
+    <h1>RSVP</h1>
+    <p>November 21, 2026 &nbsp;·&nbsp; 7:00 PM &nbsp;·&nbsp; Alpha Event Hall</p>
+  </div>
+
+  <div class="fcard" id="fc">
+    <div class="fg">
+      <label>Your Name</label>
+      <input type="text" id="fn" placeholder="Full name" autocomplete="given-name"/>
+    </div>
+    <div class="fg">
+      <label>Will you be attending?</label>
+      <div class="arow">
+        <div class="ao">
+          <input type="radio" name="att" id="ay" value="yes" onchange="onA()">
+          <label for="ay"><span class="em">🥂</span> Yes, I'll be there</label>
+        </div>
+        <div class="ao">
+          <input type="radio" name="att" id="an" value="no" onchange="onA()">
+          <label for="an"><span class="em">🙏</span> Unable to make it</label>
+        </div>
+      </div>
+    </div>
+    <div class="cond fg" id="cy">
+      <label>How many people, including yourself?</label>
+      <div class="stepper">
+        <button class="sp" type="button" onclick="sc(-1)">−</button>
+        <div class="sv" id="sv">1</div>
+        <button class="sp" type="button" onclick="sc(1)">+</button>
+      </div>
+    </div>
+    <div class="cond fg" id="cn">
+      <label>A short message for Amma</label>
+      <textarea id="fm" placeholder="Share your birthday wishes for the queen..."></textarea>
+    </div>
+    <div class="dv" style="margin:20px auto 0;max-width:170px">
+      <div class="dl"></div><div class="dd" style="font-size:5px">◆</div><div class="dl"></div>
+    </div>
+    <button class="sub" type="button" onclick="doR()">Confirm My RSVP</button>
+    <p class="whisper">🤫 &nbsp;This is a surprise — not a word until you see her face.</p>
+    <p id="status" class="whisper" style="margin-top:8px;"></p>
+  </div>
+
+  <div id="sw">
+    <div class="scard">
+      <div class="sseal">
+        <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="sg" cx="38%" cy="32%"><stop offset="0%" stop-color="#28184a"/><stop offset="100%" stop-color="#0c0820"/></radialGradient></defs>
+          <circle cx="48" cy="48" r="46" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="2 3.5" opacity=".58"/>
+          <circle cx="48" cy="48" r="40" fill="url(#sg)" stroke="#c9a84c" stroke-width="1.4" opacity=".94"/>
+          <circle cx="48" cy="48" r="34" fill="none" stroke="rgba(201,168,76,.18)" stroke-width=".8"/>
+          <text x="48" y="44" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="24" font-weight="700" fill="#c9a84c">✓</text>
+          <text x="48" y="60" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="6.5" font-weight="700" fill="#f5e6b8" letter-spacing="3">CONFIRMED</text>
+          <ellipse cx="38" cy="32" rx="7.5" ry="4" fill="rgba(255,255,255,.05)" transform="rotate(-22 38 32)"/>
+        </svg>
+      </div>
+      <div class="sh" id="sh">You're on the list.</div>
+      <div class="sm" id="sm">We'll see you on the night.</div>
+      <div class="dv" style="margin:0 auto 16px;max-width:160px">
+        <div class="dl"></div><div class="dd" style="font-size:5px">◆</div><div class="dl"></div>
+      </div>
+      <div class="sdet"><strong>November 21, 2026</strong> &nbsp;·&nbsp; 7:00 PM<br>Alpha Event Hall</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── Nav ── */
+function showP(id){
+  document.querySelectorAll('.page').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+  const el=document.getElementById(id);
+  el.style.display='block';void el.offsetWidth;el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── Stepper ── */
+let gc=1;
+function sc(d){gc=Math.max(1,Math.min(15,gc+d));document.getElementById('sv').textContent=gc;}
+
+/* ── Conditional ── */
+function onA(){
+  const v=document.querySelector('input[name=att]:checked')?.value;
+  document.getElementById('cy').classList.toggle('vis',v==='yes');
+  document.getElementById('cn').classList.toggle('vis',v==='no');
+}
+
+/* ── Google Apps Script URL ── */
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbJEYXBRThzVhmxFL3cHS515nS3dnwTI3Qoq85-9chef4Bl0WRMeJS-2WtGwcjmkndGQ/exec';
+
+/* ── RSVP submit + send to Google Sheets ── */
+function doR(){
+  const name=document.getElementById('fn').value.trim();
+  const att=document.querySelector('input[name=att]:checked');
+  const statusEl=document.getElementById('status');
+
+  if(!name){alert('Please enter your name.');return;}
+  if(!att){alert('Please let us know if you can make it.');return;}
+
+  const isYes=att.value==='yes';
+  const guests=gc;
+  const msg=document.getElementById('fm').value.trim();
+
+  // Update confirmation text (your original logic)
+  if(isYes){
+    document.getElementById('sh').textContent=`You're on the list, ${name}.`;
+    document.getElementById('sm').textContent=`We'll be expecting ${guests===1?'you':`you and ${guests-1} other${guests>2?'s':''}`}. Get ready — it's going to be a legendary night.`;
+  } else {
+    document.getElementById('sh').textContent=`We'll miss you, ${name}.`;
+    document.getElementById('sm').textContent=msg?`\"${msg}\" — Your words will mean everything to her.`:`Your thoughts are with us. Amma will be glad to know you cared enough to respond.`;
+  }
+
+  // Show sending status
+  statusEl.textContent = 'Sending your response...';
+
+  // Build form data for Apps Script
+  const fd = new FormData();
+  fd.append('name', name);
+  fd.append('attending', isYes ? 'Yes' : 'No');
+  fd.append('guests', String(guests));
+  fd.append('note', msg);
+
+  // Send to Google Apps Script (which writes to Sheets + email)
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: fd
+  })
+    .then(() => {
+      statusEl.textContent = 'Thank you! Your response has been recorded.';
+      statusEl.classList.add('status-success');
+
+      // Show your success card + confetti
+      document.getElementById('fc').style.display='none';
+      const sw=document.getElementById('sw');
+      sw.classList.add('show');
+      sw.style.display='block';
+      if(isYes && typeof burst === 'function'){
+        setTimeout(burst,350);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      statusEl.textContent = 'Sorry, something went wrong. Please try again later.';
+      statusEl.classList.add('status-error');
+    });
+}
+
+/* ── Stars ── */
+(function(){
+  const w=document.getElementById('stars');
+  const g=['★','✦','◆','·','✧','◇','✶'];
+  for(let i=0;i<55;i++){
+    const s=document.createElement('span');s.className='ts';
+    s.textContent=g[Math.floor(Math.random()*g.length)];
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${1.5+Math.random()*3.5}s;--dl:${Math.random()*4}s;--sz:${5+Math.random()*10}px;--op:${.18+Math.random()*.42};`;
+    w.appendChild(s);
+  }
+})();
+</script>
+
+/* ── Nav ── */
+function showP(id){
+  document.querySelectorAll('.page').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+  const el=document.getElementById(id);
+  el.style.display='block';void el.offsetWidth;el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── Stepper ── */
+let gc=1;
+function sc(d){gc=Math.max(1,Math.min(15,gc+d));document.getElementById('sv').textContent=gc;}
+
+/* ── Conditional ── */
+function onA(){
+  const v=document.querySelector('input[name=att]:checked')?.value;
+  document.getElementById('cy').classList.toggle('vis',v==='yes');
+  document.getElementById('cn').classList.toggle('vis',v==='no');
+}
+
+/* ── RSVP submit ── */
+function doR(){
+  const name=document.getElementById('fn').value.trim();
+  const att=document.querySelector('input[name=att]:checked');
+  if(!name){alert('Please enter your name.');return;}
+  if(!att){alert('Please let us know if you can make it.');return;}
+  const isYes=att.value==='yes';
+  if(isYes){
+    const g=gc;
+    document.getElementById('sh').textContent=`You're on the list, ${name}.`;
+    document.getElementById('sm').textContent=`We'll be expecting ${g===1?'you':`you and ${g-1} other${g>2?'s':''}`}. Get ready — it's going to be a legendary night.`;
+  } else {
+    const msg=document.getElementById('fm').value.trim();
+    document.getElementById('sh').textContent=`We'll miss you, ${name}.`;
+    document.getElementById('sm').textContent=msg?`"${msg}" — Your words will mean everything to her.`:`Your thoughts are with us. Amma will be glad to know you cared enough to respond.`;
+  }
+  document.getElementById('fc').style.display='none';
+  const sw=document.getElementById('sw');sw.classList.add('show');sw.style.display='block';
+  if(isYes)setTimeout(burst,350);
+}
+
+/* ── Stars ── */
+(function(){
+  const w=document.getElementById('stars');
+  const g=['★','✦','◆','·','✧','◇','✶'];
+  for(let i=0;i<55;i++){
+    const s=document.createElement('span');s.className='ts';
+    s.textContent=g[Math.floor(Math.random()*g.length)];
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${1.5+Math.random()*3.5}s;--dl:${Math.random()*4}s;--sz:${5+Math.random()*10}px;--op:${.18+Math.random()*.42};`;
+    w.appendChild(s);
+  }
+})();
+
+/* ── Confetti ── */
+(function(){
+  const cv=document.getElementById('cv');
+  const ctx=cv.getContext('2d');
+  function rsz(){cv.width=innerWidth;cv.height=innerHeight;}
+  rsz();addEventListener('resize',rsz);
+  const pal=['#c9a84c','#e8c96d','#f5e6b8','#d4788a','#f0b8c4','#3ecfbf','#b47dff','#ffcc77','#9de0d8'];
+  class F{
+    constructor(b){this.init(b);}
+    init(b){
+      if(b){this.x=b.x+(Math.random()-.5)*60;this.y=b.y+(Math.random()-.5)*28;this.vx=(Math.random()-.5)*15;this.vy=-Math.random()*15-5;this.decay=.013+Math.random()*.01;}
+      else{this.x=Math.random()*cv.width;this.y=-12;this.vx=(Math.random()-.5)*1.2;this.vy=.7+Math.random()*1.6;this.decay=.003+Math.random()*.0016;}
+      this.c=pal[Math.floor(Math.random()*pal.length)];this.sz=3+Math.random()*5.5;
+      this.rot=Math.random()*Math.PI*2;this.rs=(Math.random()-.5)*.10;
+      this.life=1;this.g=.16;this.drag=.987;
+      this.t=Math.random()<.5?'r':Math.random()<.5?'c':'d';
+    }
+    tick(){this.vx*=this.drag;this.vy+=this.g;this.x+=this.vx;this.y+=this.vy;this.rot+=this.rs;this.life-=this.decay;}
+    draw(){
+      ctx.save();ctx.globalAlpha=Math.max(0,this.life*.76);ctx.fillStyle=this.c;
+      ctx.translate(this.x,this.y);ctx.rotate(this.rot);
+      if(this.t==='c'){ctx.beginPath();ctx.arc(0,0,this.sz/2,0,Math.PI*2);ctx.fill();}
+      else if(this.t==='r'){ctx.fillRect(-this.sz/2,-this.sz/4,this.sz,this.sz/2);}
+      else{ctx.beginPath();ctx.moveTo(0,-this.sz/2);ctx.lineTo(this.sz/2,0);ctx.lineTo(0,this.sz/2);ctx.lineTo(-this.sz/2,0);ctx.closePath();ctx.fill();}
+      ctx.restore();
+    }
+  }
+  let fl=[];
+  for(let i=0;i<65;i++){const f=new F(false);f.y=Math.random()*cv.height;fl.push(f);}
+  let last=0;
+  function loop(ts){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    if(ts-last>180&&fl.length<100){fl.push(new F(false));last=ts;}
+    fl=fl.filter(f=>{f.tick();f.draw();return f.life>0&&f.y<cv.height+18;});
+    if(fl.length<36)for(let i=0;i<4;i++)fl.push(new F(false));
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+  window.burst=function(){
+    const cx=innerWidth/2,cy=innerHeight/3;
+    [[cx,cy],[cx-110,cy+45],[cx+110,cy+45],[cx,cy-55]].forEach(([x,y],i)=>{
+      setTimeout(()=>{for(let k=0;k<55;k++)fl.push(new F({x,y}));},i*260);
+    });
+  };
+})();
+
+/* ── Init ── */
+document.querySelectorAll('.page:not(.active)').forEach(p=>p.style.display='none');
+</script>
+</body>
+</html>
