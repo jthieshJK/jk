@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAMBE ANNE KADAI</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { height:100%; width:100%; overflow:hidden; background:#0a0a0f; font-family:"Segoe UI",Arial,sans-serif; color:#fff; }
+
+.page { position:fixed; inset:0; display:none; flex-direction:column; align-items:center; overflow:hidden; }
+.page.active { display:flex; }
+
+.orbs { position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.orb { position:absolute; border-radius:50%; filter:blur(90px); opacity:.28; animation:drift linear infinite; }
+@keyframes drift {
+  0%   { transform:translate(0,0) scale(1); }
+  25%  { transform:translate(60px,-50px) scale(1.1); }
+  50%  { transform:translate(-40px,70px) scale(0.9); }
+  75%  { transform:translate(50px,30px) scale(1.05); }
+  100% { transform:translate(0,0) scale(1); }
+}
+
+.back-btn {
+  position:absolute; top:20px; left:20px; z-index:100;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.6); padding:.5rem 1rem; border-radius:6px;
+  cursor:pointer; font-size:.78rem; letter-spacing:.15em; text-transform:uppercase;
+  transition:all .2s;
+}
+.back-btn:hover { background:rgba(255,255,255,.14); color:#fff; }
+
+/* ================================================================
+   JEGATHIESH STAMP
+================================================================ */
+#jega-stamp {
+  position:fixed; bottom:18px; right:18px; z-index:99999;
+  display:flex; align-items:center; gap:.5rem;
+  background:rgba(10,10,15,.75); border:1px solid rgba(167,139,250,.25);
+  border-radius:30px; padding:.38rem .9rem .38rem .65rem;
+  backdrop-filter:blur(10px); cursor:default;
+  animation:stampGlow 4s ease-in-out infinite alternate; transition:all .3s;
+}
+#jega-stamp:hover {
+  border-color:rgba(167,139,250,.7); background:rgba(20,10,35,.9);
+  transform:translateY(-2px); box-shadow:0 0 20px rgba(167,139,250,.3);
+}
+@keyframes stampGlow {
+  from { box-shadow:0 0 6px rgba(167,139,250,.1); }
+  to   { box-shadow:0 0 14px rgba(167,139,250,.28); }
+}
+.stamp-leaf { font-size:.95rem; animation:leafSpin 8s linear infinite; display:inline-block; }
+@keyframes leafSpin { 100%{transform:rotate(360deg);} }
+.stamp-text { font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.45); line-height:1.3; }
+.stamp-text strong {
+  display:block; font-size:.68rem; letter-spacing:.14em;
+  background:linear-gradient(135deg,#a78bfa,#34d399);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:700;
+}
+
+/* ================================================================
+   420 LOADER
+================================================================ */
+#p-loader { background:#000; z-index:99998; justify-content:center; align-items:center; flex-direction:column; transition:opacity .8s ease; }
+#p-loader.active { display:flex; }
+#p-loader.fade-out { opacity:0; pointer-events:none; }
+
+.smoke-ring {
+  position:absolute; border-radius:50%; border:1.5px solid rgba(167,139,250,.2);
+  animation:smokeExpand linear infinite; pointer-events:none;
+}
+@keyframes smokeExpand {
+  0%   { transform:scale(0.2) translateY(0); opacity:.7; }
+  100% { transform:scale(4) translateY(-80px); opacity:0; }
+}
+
+.loader-420 {
+  font-size:9rem; font-weight:900; line-height:1; letter-spacing:-.04em;
+  background:linear-gradient(135deg,#a78bfa 0%,#34d399 50%,#fbbf24 100%);
+  background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  animation:shimmer420 2s linear infinite, pulse420 3s ease-in-out infinite;
+  position:relative; z-index:2;
+}
+@keyframes shimmer420 { 0%{background-position:0% center;} 100%{background-position:200% center;} }
+@keyframes pulse420 {
+  0%,100% { transform:scale(1) rotate(-1deg); }
+  50%      { transform:scale(1.04) rotate(1deg); }
+}
+.loader-leaf { font-size:3.5rem; display:block; margin-bottom:.5rem; animation:leafFloat 3s ease-in-out infinite; position:relative; z-index:2; }
+@keyframes leafFloat {
+  0%,100% { transform:translateY(0) rotate(-5deg); }
+  50%      { transform:translateY(-12px) rotate(5deg); }
+}
+.loader-msg {
+  font-size:.85rem; letter-spacing:.3em; text-transform:uppercase;
+  color:rgba(255,255,255,.38); margin-top:1.6rem; min-height:1.4rem;
+  text-align:center; animation:msgFade .5s ease; position:relative; z-index:2;
+}
+@keyframes msgFade { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+.loader-bar-wrap { width:220px; height:3px; background:rgba(255,255,255,.07); border-radius:10px; margin-top:1.4rem; overflow:hidden; position:relative; z-index:2; }
+.loader-bar-fill { height:100%; width:0%; background:linear-gradient(90deg,#a78bfa,#34d399,#fbbf24); border-radius:10px; transition:width .4s ease; }
+.haze { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 110%, rgba(52,211,153,.06) 0%, transparent 60%); animation:hazeBreath 5s ease-in-out infinite alternate; }
+@keyframes hazeBreath { from{opacity:.4;} to{opacity:1;} }
+
+/* ================================================================
+   PAGE 1 — LANDING
+================================================================ */
+#p1 { justify-content:center; }
+.landing-content { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; text-align:center; gap:1.2rem; padding:2rem; }
+.hero-eyebrow { font-size:.65rem; letter-spacing:.45em; color:rgba(255,255,255,.38); text-transform:uppercase; border:1px solid rgba(255,255,255,.12); padding:.35rem 1.2rem; border-radius:20px; }
+.hero-title {
+  font-size:5rem; font-weight:900; line-height:.95; letter-spacing:-.01em;
+  background:linear-gradient(135deg,#fff 0%,#a78bfa 35%,#34d399 65%,#fff 100%);
+  background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  animation:shimmer 4s linear infinite;
+}
+@keyframes shimmer { 0%{background-position:0% center;} 100%{background-position:200% center;} }
+.hero-sub { font-size:1rem; color:rgba(255,255,255,.42); max-width:380px; line-height:1.7; }
+
+.type-cards { display:flex; gap:1.2rem; margin-top:.8rem; flex-wrap:wrap; justify-content:center; }
+.type-card { width:195px; padding:1.6rem 1.2rem; border-radius:18px; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:.65rem; border:1.5px solid; transition:transform .25s, box-shadow .25s; text-align:center; }
+.type-card:hover { transform:translateY(-7px); }
+.tc-icon { font-size:2.8rem; }
+.tc-name { font-size:.95rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.tc-desc { font-size:.72rem; color:rgba(255,255,255,.45); line-height:1.55; }
+.sativa-card  { background:rgba(52,211,153,.07);  border-color:rgba(52,211,153,.3);  }
+.sativa-card:hover  { box-shadow:0 18px 45px rgba(52,211,153,.22);  border-color:#34d399; }
+.sativa-card  .tc-name { color:#34d399; }
+.indica-card  { background:rgba(167,139,250,.07); border-color:rgba(167,139,250,.3); }
+.indica-card:hover  { box-shadow:0 18px 45px rgba(167,139,250,.22); border-color:#a78bfa; }
+.indica-card  .tc-name { color:#a78bfa; }
+.hybrid-card  { background:rgba(251,191,36,.07);  border-color:rgba(251,191,36,.3);  }
+.hybrid-card:hover  { box-shadow:0 18px 45px rgba(251,191,36,.22);  border-color:#fbbf24; }
+.hybrid-card  .tc-name { color:#fbbf24; }
+
+/* ================================================================
+   LISTING PAGES
+================================================================ */
+.listing-page { justify-content:flex-start; }
+.listing-header { position:relative; z-index:2; width:100%; padding:1.6rem 2rem 1rem; flex-shrink:0; }
+.listing-label { font-size:.62rem; letter-spacing:.35em; color:rgba(255,255,255,.3); text-transform:uppercase; margin-bottom:.3rem; }
+.listing-title { font-size:2.6rem; font-weight:900; letter-spacing:.04em; }
+.listing-sub { font-size:.88rem; color:rgba(255,255,255,.38); margin-top:.3rem; }
+
+.strain-grid { position:relative; z-index:2; display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem; padding:0 2rem 2rem; width:100%; overflow-y:auto; scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.08) transparent; }
+.strain-card { background:rgba(255,255,255,.04); border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.08); cursor:pointer; transition:transform .25s ease, box-shadow .25s ease, border-color .25s; }
+.strain-card:hover { transform:translateY(-5px); border-color:rgba(255,255,255,.22); }
+.strain-card.s:hover { box-shadow:0 10px 35px rgba(52,211,153,.18);  border-color:#34d399; }
+.strain-card.i:hover { box-shadow:0 10px 35px rgba(167,139,250,.18); border-color:#a78bfa; }
+.strain-card.h:hover { box-shadow:0 10px 35px rgba(251,191,36,.18);  border-color:#fbbf24; }
+.strain-img { width:100%; height:195px; display:flex; align-items:center; justify-content:center; font-size:5rem; position:relative; overflow:hidden; }
+.strain-img::after { content:""; position:absolute; inset:0; background:linear-gradient(to bottom, transparent 50%, rgba(0,0,0,.5) 100%); }
+.strain-body { padding:1rem 1.1rem 1.2rem; display:flex; flex-direction:column; gap:.45rem; }
+.strain-name { font-size:1.05rem; font-weight:700; }
+.strain-thc { font-size:.7rem; color:rgba(255,255,255,.35); }
+.strain-thc span { color:rgba(255,255,255,.7); font-weight:600; }
+.strain-hook { font-size:.8rem; color:rgba(255,255,255,.5); line-height:1.55; font-style:italic; }
+.strain-tags { display:flex; gap:.3rem; flex-wrap:wrap; margin-top:.15rem; }
+.stag { font-size:.6rem; padding:.18rem .5rem; background:rgba(255,255,255,.07); border-radius:20px; color:rgba(255,255,255,.42); }
+
+/* ================================================================
+   FORM PAGE
+================================================================ */
+#p-form { justify-content:flex-start; }
+.form-scroll { position:relative; z-index:2; width:100%; max-width:580px; align-self:center; padding:2.5rem 2rem 3rem; overflow-y:auto; max-height:100vh; display:flex; flex-direction:column; gap:1.3rem; scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.08) transparent; }
+.form-title { font-size:2.2rem; font-weight:900; line-height:1.15; }
+.form-sub { font-size:.88rem; color:rgba(255,255,255,.38); line-height:1.65; }
+.field label { display:block; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:.45rem; }
+.field input, .field select, .field textarea { width:100%; background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.1); border-radius:8px; padding:.75rem 1rem; color:#fff; font-size:.88rem; outline:none; transition:border-color .2s; font-family:inherit; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color:rgba(167,139,250,.55); }
+.field select option { background:#1a1a2e; }
+.check-group { display:flex; flex-wrap:wrap; gap:.5rem; }
+.check-group label { font-size:.73rem; letter-spacing:.04em; text-transform:none; color:rgba(255,255,255,.55); display:flex; align-items:center; gap:.4rem; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); padding:.4rem .85rem; border-radius:20px; cursor:pointer; margin:0; transition:background .2s; }
+.check-group label:hover { background:rgba(255,255,255,.1); }
+.check-group input[type=checkbox] { width:auto; background:none; border:none; padding:0; accent-color:#a78bfa; }
+.submit-btn { padding:1rem; font-size:.88rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; background:linear-gradient(135deg,#7c3aed,#059669); border:none; color:#fff; border-radius:8px; cursor:pointer; transition:opacity .2s, transform .15s; }
+.submit-btn:hover { opacity:.85; transform:translateY(-2px); }
+.submit-btn:active { transform:scale(0.98); }
+.success-msg { display:none; padding:1.5rem; border-radius:12px; text-align:center; background:rgba(52,211,153,.08); border:1.5px solid rgba(52,211,153,.3); color:#34d399; font-size:.95rem; line-height:1.7; }
+</style>
+</head>
+<body>
+
+<!-- STAMP -->
+<div id="jega-stamp">
+  <span class="stamp-leaf">&#127807;</span>
+  <div class="stamp-text">A <strong>JEGATHIESH IDEA</strong></div>
+</div>
+
+<!-- ================================================================
+     420 LOADER
+================================================================ -->
+<div id="p-loader" class="page active">
+  <div class="haze"></div>
+  <div class="smoke-ring" style="width:300px;height:300px;animation-duration:5s;animation-delay:0s;"></div>
+  <div class="smoke-ring" style="width:250px;height:250px;animation-duration:5s;animation-delay:-1.7s;"></div>
+  <div class="smoke-ring" style="width:200px;height:200px;animation-duration:5s;animation-delay:-3.4s;"></div>
+  <div class="orbs">
+    <div class="orb" style="width:350px;height:350px;background:#5b21b6;top:10%;left:10%;animation-duration:9s;opacity:.2;"></div>
+    <div class="orb" style="width:300px;height:300px;background:#059669;bottom:10%;right:10%;animation-duration:12s;animation-delay:-4s;opacity:.15;"></div>
+  </div>
+  <span class="loader-leaf">&#127807;</span>
+  <div class="loader-420">420</div>
+  <div class="loader-msg" id="loaderMsg">Tengah prepare ni bro...</div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar-fill" id="loaderBar"></div>
+  </div>
+</div>
+
+<!-- ================================================================
+     PAGE 1 — LANDING
+================================================================ -->
+<div id="p1" class="page">
+  <div class="orbs">
+    <div class="orb" style="width:520px;height:520px;background:#7c3aed;top:-20%;left:-12%;animation-duration:10s;"></div>
+    <div class="orb" style="width:400px;height:400px;background:#059669;top:55%;left:62%;animation-duration:13s;animation-delay:-5s;"></div>
+    <div class="orb" style="width:300px;height:300px;background:#d97706;top:65%;left:25%;animation-duration:8s;animation-delay:-3s;"></div>
+  </div>
+  <div class="landing-content">
+    <div class="hero-eyebrow">&#127807; Kedai Strain Paling Power Sini</div>
+    <h1 class="hero-title">NAMBE<br>ANNE<br>KADAI</h1>
+    <p class="hero-sub">Korang nak tau pasal strain? Datang tempat yang betul lah. Kita guide korang, confirm tak sesat.</p>
+    <div class="type-cards">
+      <div class="type-card sativa-card" onclick="goTo('p-sativa')">
+        <div class="tc-icon">&#127807;</div>
+        <div class="tc-name">Sativa</div>
+        <div class="tc-desc">Energy power gila lah. Perfect untuk korang yang suka berkreatif dan berangan.</div>
+      </div>
+      <div class="type-card indica-card" onclick="goTo('p-indica')">
+        <div class="tc-icon">&#127769;</div>
+        <div class="tc-name">Indica</div>
+        <div class="tc-desc">Relax terus wei. Best lepas penat kerja, lepak kat rumah je lah.</div>
+      </div>
+      <div class="type-card hybrid-card" onclick="goTo('p-hybrid')">
+        <div class="tc-icon">&#9889;</div>
+        <div class="tc-name">Hybrid</div>
+        <div class="tc-desc">Dua dunia punya best, bro. Balance gila untuk semua occasion.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     PAGE 2 — SATIVA
+================================================================ -->
+<div id="p-sativa" class="page listing-page">
+  <div class="orbs">
+    <div class="orb" style="width:400px;height:400px;background:#059669;top:-15%;right:-5%;animation-duration:9s;"></div>
+    <div class="orb" style="width:280px;height:280px;background:#34d399;bottom:-10%;left:-5%;animation-duration:11s;animation-delay:-4s;"></div>
+  </div>
+  <button class="back-btn" onclick="goBack()">&#8592; Balik</button>
+  <div class="listing-header">
+    <div class="listing-label">Jom Explore Strain</div>
+    <div class="listing-title" style="color:#34d399;">&#127807; Sativa</div>
+    <div class="listing-sub">Otak jalan laju, badan rasa ringan. Confirm sesuai untuk aktiviti siang hari lah.</div>
+  </div>
+  <div class="strain-grid">
+
+    <div class="strain-card s" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#064e3b,#065f46,#047857);">&#127807;</div>
+      <div class="strain-body">
+        <div class="strain-name">Sour Diesel</div>
+        <div class="strain-thc">THC <span>22%</span> &nbsp;&#183;&nbsp; CBD <span>0.2%</span></div>
+        <div class="strain-hook">"Macam kopi tapi lagi power, confirm tak mengantuk wei."</div>
+        <div class="strain-tags"><span class="stag">Power Gila</span><span class="stag">Fokus</span><span class="stag">Kreatif</span></div>
+      </div>
+    </div>
+
+    <div class="strain-card s" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#14532d,#166534,#15803d);">&#127807;</div>
+      <div class="strain-body">
+        <div class="strain-name">Jack Herer</div>
+        <div class="strain-thc">THC <span>18%</span> &nbsp;&#183;&nbsp; CBD <span>0.03%</span></div>
+        <div class="strain-hook">"Legend punya strain, nama pun legend. Respect wajib lah."</div>
+        <div class="strain-tags"><span class="stag">Uplifted</span><span class="stag">Kreatif</span><span class="stag">Clear-headed</span></div>
+      </div>
+    </div>
+
+    <div class="strain-card s" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#1e3a5f,#1e40af,#3b82f6);">&#128153;</div>
+      <div class="strain-body">
+        <div class="strain-name">Purple Haze</div>
+        <div class="strain-thc">THC <span>20%</span> &nbsp;&#183;&nbsp; CBD <span>0.1%</span></div>
+        <div class="strain-hook">"Hendrix pun nyanyi pasal feeling ni. Power betul lah."</div>
+        <div class="strain-tags"><span class="stag">Euphoric</span><span class="stag">Syok</span><span class="stag">Happy</span></div>
+      </div>
+    </div>
+
+    <div class="strain-card s" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#713f12,#92400e,#b45309);">&#10024;</div>
+      <div class="strain-body">
+        <div class="strain-name">Amnesia Haze</div>
+        <div class="strain-thc">THC <span>21%</span> &nbsp;&#183;&nbsp; CBD <span>0.1%</span></div>
+        <div class="strain-hook">"Masalah semua lupa, tapi otak still clear gila bro."</div>
+        <div class="strain-tags"><span class="stag">Euphoric</span><span class="stag">Citrusy</span><span class="stag">Psychedelic</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================================================================
+     PAGE 3 — INDICA
+================================================================ -->
+<div id="p-indica" class="page listing-page">
+  <div class="orbs">
+    <div class="orb" style="width:430px;height:430px;background:#5b21b6;top:-15%;right:-5%;animation-duration:10s;"></div>
+    <div class="orb" style="width:280px;height:280px;background:#7c3aed;bottom:-10%;left:-5%;animation-duration:12s;animation-delay:-5s;"></div>
+  </div>
+  <button class="back-btn" onclick="goBack()">&#8592; Balik</button>
+  <div class="listing-header">
+    <div class="listing-label">Jom Explore Strain</div>
+    <div class="listing-title" style="color:#a78bfa;">&#127769; Indica</div>
+    <div class="listing-sub">Lepak gila, badan rasa macam heaven. Perfect untuk malam lepas penat kerja tau.</div>
+  </div>
+  <div class="strain-grid">
+
+    <div class="strain-card i" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#3b0764,#4c1d95,#5b21b6);">&#128081;</div>
+      <div class="strain-body">
+        <div class="strain-name">OG Kush</div>
+        <div class="strain-thc">THC <span>23%</span> &nbsp;&#183;&nbsp; CBD <span>0.3%</span></div>
+        <div class="strain-hook">"Yang paling OG sekali. Royalty tau tak, respect kena bagi."</div>
+        <div class="strain-tags"><span class="stag">Relax</span><span class="stag">Mengantuk</span><span class="stag">Happy</span></div>
+      </div>
+    </div>
+
+    <div class="strain-card i" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#1e1b4b,#312e81,#4338ca);">&#127756;</div>
+      <div class="strain-body">
+        <div class="strain-name">Northern Lights</div>
+        <div class="strain-thc">THC <span>18%</span> &nbsp;&#183;&nbsp; CBD <span>0.1%</span></div>
+        <div class="strain-hook">"Macam tengok aurora dari sofa sendiri. Forever chill mode."</div>
+        <div class="strain-tags"><span class="stag">Dreamy</span><span class="stag">Tenang</span><span class="stag">Mengantuk</span></div>
+      </div>
+    </div>
+
+    <div class="strain-card i" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#500724,#881337,#9f1239);">&#127815;</div>
+      <div class="strain-body">
+        <div class="strain-name">Granddaddy Purple</div>
+        <div class="strain-thc">THC <span>20%</span> &nbsp;&#183;&nbsp; CBD <span>0.1%</span></div>
+        <div class="strain-hook">"Rasa macam anggur tapi lagi sedap. Confirm tidur lena wei."</div>
+        <div class="strain-tags"><span class="stag">Euphoric</span><span class="stag">Sedating</span><span class="stag">Manis</span></div>
+      </div>
+    </div>
+
+    <div class="strain-card i" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#1c1917,#292524,#44403c);">&#128564;</div>
+      <div class="strain-body">
+        <div class="strain-name">Bubba Kush</div>
+        <div class="strain-thc">THC <span>17%</span> &nbsp;&#183;&nbsp; CBD <span>0.1%</span></div>
+        <div class="strain-hook">"Badan cair terus bro. Otak cakap terima kasih banyak-banyak."</div>
+        <div class="strain-tags"><span class="stag">Berat</span><span class="stag">Tenang</span><span class="stag">Chocolatey</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================================================================
+     PAGE 4 — HYBRID
+================================================================ -->
+<div id="p-hybrid" class="page listing-page">
+  <div class="orbs">
+    <div class="orb" style="width:400px;height:400px;background:#d97706;top:-15%;right:-5%;animation-duration:9s;opacity:.22;"></div>
+    <div class="orb" style="width:300px;height:300px;background:#7c3aed;bottom:-10%;left:-5%;animation-duration:11s;animation-delay:-4s;opacity:.22;"></div>
+  </div>
+  <button class="back-btn" onclick="goBack()">&#8592; Balik</button>
+  <div class="listing-header">
+    <div class="listing-label">Jom Explore Strain</div>
+    <div class="listing-title" style="color:#fbbf24;">&#9889; Hybrid</div>
+    <div class="listing-sub">Gabungan terbaik dua dunia bro. Confirm steady untuk semua jenis occasion.</div>
+  </div>
+  <div class="strain-grid">
+
+    <div class="strain-card h" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#0c4a6e,#0369a1,#0ea5e9);">&#128173;</div>
+      <div class="strain-body">
+        <div class="strain-name">Blue Dream</div>
+        <div class="strain-thc">THC <span>21%</span> &nbsp;&#183;&nbsp; CBD <span>2%</span></div>
+        <div class="strain-hook">"Pejam mata. Rasa macam terbang. Confirm best gila lah."</div>
+        <div class="strain-tags"><span class="stag">Kreatif</span><span class="stag">Euphoric</span><span class="stag">Relax</span></div>
+      </div>
+    </div>
+
+    <div class="strain-card h" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#1a2e05,#365314,#4d7c0f);">&#127850;</div>
+      <div class="strain-body">
+        <div class="strain-name">Girl Scout Cookies</div>
+        <div class="strain-thc">THC <span>28%</span> &nbsp;&#183;&nbsp; CBD <span>0.2%</span></div>
+        <div class="strain-hook">"Bukan biskut budak-budak tau. Ini lain level terus weh."</div>
+        <div class="strain-tags"><span class="stag">Kuat Gila</span><span class="stag">Euphoric</span><span class="stag">Minty</span></div>
+      </div>
+    </div>
+
+    <div class="strain-card h" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#4a044e,#701a75,#a21caf);">&#127848;</div>
+      <div class="strain-body">
+        <div class="strain-name">Gelato</div>
+        <div class="strain-thc">THC <span>25%</span> &nbsp;&#183;&nbsp; CBD <span>0.2%</span></div>
+        <div class="strain-hook">"Export paling sedap dari San Francisco. Memang terror lah."</div>
+        <div class="strain-tags"><span class="stag">Manis</span><span class="stag">Tingly</span><span class="stag">Happy</span></div>
+      </div>
+    </div>
+
+    <div class="strain-card h" onclick="goTo('p-form')">
+      <div class="strain-img" style="background:linear-gradient(135deg,#1c1917,#44403c,#78716c);">&#129412;</div>
+      <div class="strain-body">
+        <div class="strain-name">Gorilla Glue #4</div>
+        <div class="strain-thc">THC <span>28%</span> &nbsp;&#183;&nbsp; CBD <span>0.1%</span></div>
+        <div class="strain-hook">"Confirm lekat kat sofa. Korang tak kisah pun, memang best."</div>
+        <div class="strain-tags"><span class="stag">Berat</span><span class="stag">Euphoric</span><span class="stag">Piney</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================================================================
+     PAGE 5 — FORM
+================================================================ -->
+<div id="p-form" class="page">
+  <div class="orbs">
+    <div class="orb" style="width:350px;height:350px;background:#7c3aed;top:-10%;right:-5%;animation-duration:10s;opacity:.18;"></div>
+    <div class="orb" style="width:280px;height:280px;background:#059669;bottom:-5%;left:-5%;animation-duration:12s;animation-delay:-4s;opacity:.18;"></div>
+  </div>
+  <button class="back-btn" onclick="goBack()">&#8592; Balik</button>
+  <div class="form-scroll">
+    <div>
+      <div style="font-size:.62rem;letter-spacing:.35em;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:.5rem;">&#127807; Jom Join Community Kita</div>
+      <div class="form-title">Cari Strain<br><span style="background:linear-gradient(135deg,#a78bfa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Korang Punya</span></div>
+      <p class="form-sub" style="margin-top:.6rem;">Cerita sikit pasal diri korang, kita akan suggest strain yang memang kena dengan korang. Confirm tak rugi lah.</p>
+    </div>
+
+    <div class="field"><label>Nama Korang</label><input type="text" id="f-name" placeholder="contoh: Jega, Tupac, Anne..."></div>
+    <div class="field"><label>Emel Korang</label><input type="email" id="f-email" placeholder="korang@email.com"></div>
+
+    <div class="field">
+      <label>Umur (Wajib 18+ Tau)</label>
+      <select id="f-age">
+        <option value="">Korang berumur...</option>
+        <option>18 - 24 tahun</option>
+        <option>25 - 34 tahun</option>
+        <option>35 - 44 tahun</option>
+        <option>45 tahun ke atas</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Jenis Strain Yang Korang Suka</label>
+      <select id="f-type">
+        <option value="">Pilih dulu lah...</option>
+        <option>&#127807; Sativa — Nak energy dan kreativiti</option>
+        <option>&#127769; Indica — Nak relax dan tidur lena</option>
+        <option>&#9889; Hybrid — Nak balance sikit</option>
+        <option>&#129335; Tak sure lagi, tolong guide</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Korang Nak Apa? (boleh pilih banyak)</label>
+      <div class="check-group">
+        <label><input type="checkbox"> &#128564; Nak Tidur Lena</label>
+        <label><input type="checkbox"> &#127912; Nak Kreatif</label>
+        <label><input type="checkbox"> &#128524; Nak Kurang Stress</label>
+        <label><input type="checkbox"> &#128170; Nak Tahan Sakit</label>
+        <label><input type="checkbox"> &#129504; Nak Fokus</label>
+        <label><input type="checkbox"> &#128516; Nak Mood Naik</label>
+        <label><input type="checkbox"> &#127869; Nak Selera Makan</label>
+        <label><input type="checkbox"> &#127918; Nak Lepak-lepak Je</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Level Pengalaman Korang</label>
+      <select id="f-exp">
+        <option value="">Jujur tau...</option>
+        <option>&#127807; First Timer — Slow-slow dulu lah</option>
+        <option>&#127807; Sekali-sekala — Tau sikit-sikit</option>
+        <option>&#128293; Regular — Bawa je lah</option>
+        <option>&#128142; Connoisseur — Semua dah try dah</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Ada Apa-Apa Lagi Nak Bagitau? (Optional)</label>
+      <textarea id="f-note" rows="3" placeholder="contoh: Aku ada anxiety lah, prefer rasa buah-buahan, tak nak yang terlalu kuat..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="submitForm()">Tunjukkan Strain Aku &#8594;</button>
+
+    <div class="success-msg" id="successMsg">
+      &#127881; Steady lah korang!<br>
+      <strong>Check emel korang</strong> — kita dah hantar strain recommendation korang.<br><br>
+      <span style="color:rgba(255,255,255,.4);font-size:.82rem;">Sambil tunggu, boleh explore lagi kat atas tu &#8593;</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     JAVASCRIPT
+================================================================ -->
+<script>
+  const hist = [];
+
+  function goTo(id) {
+    const cur = document.querySelector('.page.active');
+    if (cur) hist.push(cur.id);
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function goBack() {
+    if (hist.length > 0) {
+      const prev = hist.pop();
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(prev).classList.add('active');
+    } else {
+      goTo('p1');
+    }
+  }
+
+  /* 420 Loader */
+  const messages = [
+    'Tengah prepare ni bro...',
+    'Setting the vibe dulu...',
+    'Almost ready wei...',
+    'Jangan rushing lah...',
+    'Siap dah! Jom masuk!'
+  ];
+  const msgEl = document.getElementById('loaderMsg');
+  const barEl = document.getElementById('loaderBar');
+  const stepTime = 3500 / messages.length;
+
+  function stepLoader(i) {
+    if (i >= messages.length) {
+      const loader = document.getElementById('p-loader');
+      loader.classList.add('fade-out');
+      setTimeout(() => {
+        loader.classList.remove('active');
+        document.getElementById('p1').classList.add('active');
+      }, 850);
+      return;
+    }
+    msgEl.style.animation = 'none';
+    void msgEl.offsetWidth;
+    msgEl.style.animation = 'msgFade .5s ease';
+    msgEl.textContent = messages[i];
+    barEl.style.width = ((i + 1) / messages.length * 100) + '%';
+    setTimeout(() => stepLoader(i + 1), stepTime);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => setTimeout(() => stepLoader(0), 400));
+
+  /* Form */
+  function submitForm() {
+    const name  = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const age   = document.getElementById('f-age').value;
+    if (!name || !email || !age) {
+      alert('Eh, isi nama, emel, dan umur dulu lah bro! 🌿');
+      return;
+    }
+    document.querySelector('.submit-btn').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
